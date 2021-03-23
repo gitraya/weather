@@ -10,10 +10,18 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.App {
+  background-color: #100e1d;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 /* Footer styling */
 .App-footer {
   display: flex;
   flex-direction: column;
+  margin-top: auto;
 }
 .copyright {
   max-width: 100%;
@@ -21,9 +29,9 @@ body {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  color: #f2f2f2;
+  color: #a09fb1;
 }
 .copyright a {
-  color: #f2f2f2;
+  color: #a09fb1;
   text-decoration: none;
 }
