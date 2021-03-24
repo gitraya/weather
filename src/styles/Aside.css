@@ -6,7 +6,7 @@ button:focus {
   position: relative;
   z-index: 1;
   display: flex;
-  flex-grow: 0.25;
+  width: 30%;
   flex-direction: column;
   background: #1e213a;
 }
@@ -44,6 +44,7 @@ button:focus {
   border: none;
 }
 .coordinate-icon {
+  border: none;
   border-radius: 50%;
   padding: 9px;
   display: flex;
@@ -119,14 +120,28 @@ button:focus {
 /* modal search */
 .modal-search {
   position: absolute;
-  z-index: 100;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 0px 2.5rem;
+  padding: 0px 2rem;
   background: #1e213a;
+  animation-duration: 1s;
+  animation-name: slideIn;
 }
+
+@keyframes slideIn {
+  0% {
+    right: 100%;
+    opacity: 0;
+  }
+  100% {
+    right: 0%;
+    opacity: 1;
+  }
+}
+
 .clear {
   width: 100%;
   height: 60px;
@@ -145,6 +160,7 @@ form {
   margin: 1rem 0px;
 }
 .input-control {
+  flex-grow: 0.7;
   position: relative;
   margin-right: 0.75rem;
 }
@@ -157,6 +173,7 @@ form {
   z-index: 1;
 }
 .input-control input {
+  width: 100%;
   color: #e7e7eb;
   background: none;
   font-size: 1rem;
@@ -172,7 +189,7 @@ form {
 }
 .search-submit {
   padding: 15px;
-  flex-grow: 1;
+  flex-grow: 0.3;
   color: #e7e7eb;
   font-size: 1rem;
   font-weight: 600;

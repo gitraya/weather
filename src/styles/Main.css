@@ -1,0 +1,42 @@
+.container.main {
+  background: #100e1d;
+  position: relative;
+  z-index: 1;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 5% 0px 7.5%;
+}
+.nav.main {
+  width: 100%;
+  height: 100px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.button-temp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.75rem;
+  border-radius: 50%;
+  padding: 9px 10px;
+  border: none;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #e7e7eb;
+  background: #585676;
+}
+.button-temp:nth-of-type(2) {
+  padding: 9px 12px;
+}
+
+.cards-weekly {
+  width: 100%;
+  height: auto;
+  margin: 2rem 0px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 1.5rem;
+}

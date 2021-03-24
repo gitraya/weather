@@ -1,0 +1,77 @@
+.cards-highlights {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1rem 0px;
+}
+.cards-highlights h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0px 1.5rem;
+  color: #e7e7eb;
+}
+.grid-highlights {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 2rem;
+}
+.card-highlight {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: #1e213a;
+}
+.highlight-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0.5rem 0px;
+  color: #e7e7eb;
+}
+.highlight-text {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #e7e7eb;
+}
+.highlight-text.more {
+  margin-bottom: 1.5rem;
+}
+.highlight-text span {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* navigation wind */
+.indicator-navigation {
+  display: flex;
+  align-items: center;
+}
+.wind-icon {
+  padding: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  margin-right: 0.7rem;
+}
+.wind-icon i {
+  font-size: 1.25rem;
+  color: #e7e7eb;
+}
+.indicator-navigation span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #e7e7eb;
+}
+
+/* humidity percentage */
+.indicator-humidity {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.percentage-text {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}

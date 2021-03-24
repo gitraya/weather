@@ -19,9 +19,9 @@ const Aside = () => {
                 Search for places
               </button>
             </div>
-            <div className="coordinate-icon">
+            <button className="coordinate-icon">
               <i class="material-icons-round">my_location</i>
-            </div>
+            </button>
           </nav>
         </header>
         <main className="main">
