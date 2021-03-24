@@ -1,6 +1,5 @@
 import Footer from 'components/Footer';
-import cloudBackground from 'images/Cloud-background.png';
-import { weatherImages } from 'helpers/images';
+import Aside from './Aside';
 
 function App() {
   const cors_api_url = 'https://cors-anywhere.herokuapp.com/';
@@ -15,47 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <aside className="container default">
-        <div className="app-default">
-          <header className="header">
-            <nav className="nav">
-              <div className="search-button">
-                <button className="lg-cl" onClick={fetchingData}>
-                  Search for places
-                </button>
-              </div>
-              <div className="coordinate-icon">
-                <i class="material-icons-round lg-cl">my_location</i>
-              </div>
-            </nav>
-          </header>
-          <main className="main">
-            <section className="weather-today">
-              <div className="image-weather">
-                <img src={weatherImages[6]} alt="weather icon" />
-              </div>
-              <div className="text-weather">
-                <h1 className="lg-cl">
-                  15<span>℃</span>
-                </h1>
-                <h2>Shower</h2>
-              </div>
-              <div className="text-date">
-                <div className="date">
-                  <span>Today</span>
-                  {` . `}
-                  <span>Fri, 5 Jun</span>
-                </div>
-                <div className="location">
-                  <i class="material-icons-round">location_on</i>
-                  <span>Jakarta</span>
-                </div>
-              </div>
-            </section>
-          </main>
-        </div>
-        <img className="img-bg" src={cloudBackground} alt="cloud background" />
-      </aside>
+      <Aside />
       <div className="container main">
         <header className="header">
           <nav className="nav">
