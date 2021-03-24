@@ -11,7 +11,7 @@ const Aside = ({ data }) => {
   };
 
   useEffect(() => {
-    if (data) setWeatherImage(data.weather_state_abbr);
+    if (data) setWeatherImage(getWeatherImage(data.weather_state_abbr));
   }, []);
 
   return (
@@ -32,19 +32,25 @@ const Aside = ({ data }) => {
         <main className="main">
           <section className="weather-today">
             <div className="image-weather">
-              <img src={getWeatherImage(weatherImage)} alt="weather icon" />
+              <img src={weatherImage} alt="weather icon" />
             </div>
             <div className="text-weather">
               <h1>
-                15<span>℃</span>
+                {parseInt(data.the_temp)}
+                <span>℃</span>
               </h1>
-              <h2>Shower</h2>
+              <h2>{data.weather_state_name}</h2>
             </div>
             <div className="text-date">
               <div className="date">
                 <span>Today</span>
                 {`  .  `}
-                <span>Fri, 5 Jun</span>
+                <span>
+                  {new Intl.DateTimeFormat('en-US', { weekday: 'long' })
+                    .format(new Date(data.applicable_date))
+                    .slice(0, 3)}
+                  , {new Date(data.applicable_date).getDay().toString()} Jun
+                </span>
               </div>
               <div className="location">
                 <i class="material-icons-round">location_on</i>

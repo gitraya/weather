@@ -32,10 +32,10 @@ const App = () => {
   useEffect(() => {
     if (!allData) return fetchingData();
   });
-  console.log(todayWeather);
+
   return (
     <div className="App">
-      <Aside data={todayWeather} />
+      {todayWeather ? <Aside data={todayWeather} /> : <div></div>}
       <Main data={allData} />
     </div>
   );
