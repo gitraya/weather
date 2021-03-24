@@ -31,7 +31,7 @@ const CardsHighlights = () => {
             <div className="humidity-percentage">
               <div className="percent-range"></div>
             </div>
-            <span>%</span>
+            <span className="percent-text">%</span>
           </div>
         </div>
         <div className="card-highlight">

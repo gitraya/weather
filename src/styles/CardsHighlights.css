@@ -48,7 +48,7 @@
   align-items: center;
 }
 .wind-icon {
-  padding: 6px;
+  padding: 6px 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
   margin-right: 0.7rem;
@@ -73,5 +73,29 @@
 .percentage-text {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+.percentage-text span,
+.percent-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #a09fb1;
+}
+.humidity-percentage {
+  width: 100%;
+  height: 0.5rem;
+  display: flex;
+  margin: 0.125rem 0px;
+  background: #e7e7eb;
+  border-radius: 80px;
+}
+.percent-range {
+  width: 75%;
+  height: 100%;
+  background: #ffec65;
+  border-radius: 80px;
+}
+.percent-text {
+  width: 100%;
+  text-align: right;
 }
