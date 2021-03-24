@@ -1,7 +1,6 @@
 import Footer from 'components/Footer';
 import cloudBackground from 'images/Cloud-background.png';
 import { weatherImages } from 'helpers/images';
-const [shower] = weatherImages;
 
 function App() {
   const cors_api_url = 'https://cors-anywhere.herokuapp.com/';
@@ -32,22 +31,22 @@ function App() {
           </header>
           <main className="main">
             <section className="weather-today">
-              <div>
-                <img src={shower} alt="weather icon" />
+              <div className="image-weather">
+                <img src={weatherImages[6]} alt="weather icon" />
               </div>
-              <div>
-                <h1>
+              <div className="text-weather">
+                <h1 className="lg-cl">
                   15<span>℃</span>
                 </h1>
                 <h2>Shower</h2>
               </div>
-              <div>
-                <div>
+              <div className="text-date">
+                <div className="date">
                   <span>Today</span>
                   {` . `}
                   <span>Fri, 5 Jun</span>
                 </div>
-                <div>
+                <div className="location">
                   <i class="material-icons-round">location_on</i>
                   <span>Jakarta</span>
                 </div>
