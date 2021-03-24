@@ -6,7 +6,7 @@ import CardsHighlights from 'components/CardsHighlights';
 const Main = () => {
   const arr = [1, 2, 3, 4, 5];
   const cardsWeather = arr.map((card) => {
-    return <CardWeather />;
+    return <CardWeather key={card} />;
   });
   return (
     <div className="container main">

@@ -21,3 +21,30 @@ export const weatherImages = [
   snow,
   thunderstorm,
 ];
+
+export const getWeatherImage = (weather) => {
+  switch (weather) {
+    case 'c':
+      return clear;
+    case 'h':
+      return hail;
+    case 'hc':
+      return heavyCloud;
+    case 'hr':
+      return heavyRain;
+    case 'lc':
+      return lightCloud;
+    case 'lr':
+      return lightRain;
+    case 's':
+      return shower;
+    case 'sl':
+      return sleet;
+    case 'sn':
+      return snow;
+    case 't':
+      return thunderstorm;
+    default:
+      break;
+  }
+};

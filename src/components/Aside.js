@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import 'styles/Aside.css';
 import cloudBackground from 'images/Cloud-background.png';
-import { weatherImages } from 'helpers/images';
+import { getWeatherImage } from 'helpers/images';
 
-const Aside = () => {
+const Aside = ({ data }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [weatherImage, setWeatherImage] = useState(null);
   const handleModal = () => {
     setModalOpen(!modalOpen);
   };
+
+  useEffect(() => {
+    if (data) setWeatherImage(data.weather_state_abbr);
+  }, []);
 
   return (
     <aside className="container default">
@@ -27,7 +32,7 @@ const Aside = () => {
         <main className="main">
           <section className="weather-today">
             <div className="image-weather">
-              <img src={weatherImages[6]} alt="weather icon" />
+              <img src={getWeatherImage(weatherImage)} alt="weather icon" />
             </div>
             <div className="text-weather">
               <h1>
