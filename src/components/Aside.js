@@ -4,7 +4,7 @@ import cloudBackground from 'images/Cloud-background.png';
 import { getWeatherImage } from 'helpers/images';
 import SearchModal from 'components/SearchModal';
 
-const Aside = ({ data, location, cors, searchHandle, temp }) => {
+const Aside = ({ data, location, cors, searchHandle, temp, position }) => {
   // react state for weather data and search modal
   const [modalOpen, setModalOpen] = useState(false);
   const [weatherImage, setWeatherImage] = useState(null);
@@ -41,7 +41,11 @@ const Aside = ({ data, location, cors, searchHandle, temp }) => {
                 Search for places
               </button>
             </div>
-            <button className="coordinate-icon">
+            <button
+              type="submit"
+              onClick={position}
+              className="coordinate-icon"
+            >
               <i class="material-icons-round">my_location</i>
             </button>
           </nav>

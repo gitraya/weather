@@ -21,3 +21,10 @@ i {
   flex-direction: row;
   position: relative;
 }
+
+/* mobile device */
+@media screen and (max-width: 540px) {
+  .App {
+    flex-direction: column;
+  }
+}

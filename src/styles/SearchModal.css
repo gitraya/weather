@@ -11,6 +11,11 @@
   animation-duration: 1s;
   animation-name: slideIn;
 }
+@media screen and (min-width: 1800px) and (max-width: 5000px) {
+  .modal-search {
+    padding: 0px 20%;
+  }
+}
 
 @keyframes slideIn {
   0% {
@@ -85,7 +90,7 @@ form {
 .result-search {
   margin: 1.5rem 0px;
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
@@ -123,4 +128,16 @@ form {
   width: 100%;
   padding: 22px 15px;
   background: none;
+}
+
+.loading {
+  margin: 2.5rem auto auto;
+  color: #e7e7eb;
+}
+
+/* mobile device */
+@media screen and (max-width: 425px) {
+  .modal-search {
+    padding: 0px 1rem;
+  }
 }

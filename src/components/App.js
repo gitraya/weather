@@ -10,7 +10,7 @@ const App = () => {
   const [todayWeather, setTodayWeather] = useState(null);
   const [weeklyWeather, setWeeklyWeather] = useState(null);
   const [locationName, setLocationName] = useState(null);
-  const [woeid, setWoeid] = useState(1047378);
+  const [woeid, setWoeid] = useState(null);
   const [isFahrenheit, setIsFahrenheit] = useState(false);
 
   // fetching weather data based on woeid
@@ -25,6 +25,32 @@ const App = () => {
       })
       .catch((err) => console.log(err));
     return fetchData;
+  };
+
+  // ask and get user location
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(getPosition);
+    } else {
+      alert('Cannot find your location!');
+    }
+  };
+
+  // get user position and update weather data by user position
+  const getPosition = async ({ coords }) => {
+    await fetch(
+      `${cors_api_url}https://www.metaweather.com/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          return updateWeatherData(data[0].woeid);
+        } else {
+          alert('Cannot find your location!');
+          return false;
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   // get and set weather data
@@ -58,13 +84,16 @@ const App = () => {
   // react use effect get data from metaweather api
   useEffect(() => {
     const getAllData = async () => {
+      let data;
       if (!allData) {
-        let data = await fetchingData(woeid);
+        return (data = await getUserLocation());
+      } else if (!allData && !data) {
+        let data = await fetchingData(1047378);
         return getWeatherData(data);
       }
     };
     getAllData();
-  }, [allData, woeid]);
+  });
 
   return (
     <div className="App">
@@ -75,6 +104,7 @@ const App = () => {
           cors={cors_api_url}
           searchHandle={updateWeatherData}
           temp={{ isFahrenheit, convertTemp }}
+          position={getUserLocation}
         />
       ) : (
         <div></div>

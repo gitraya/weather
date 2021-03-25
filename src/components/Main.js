@@ -31,7 +31,6 @@ const Main = ({ data, todaysData, temp }) => {
   useEffect(() => {
     if (data) {
       setNextWeather(data.slice(1));
-      console.log(data);
     }
   }, [data, setNextWeather]);
 

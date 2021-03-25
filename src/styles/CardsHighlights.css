@@ -14,6 +14,13 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem 2rem;
 }
+@media screen and (max-width: 768px) {
+  .grid-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem 0px;
+  }
+}
 .card-highlight {
   width: 100%;
   display: flex;
@@ -69,6 +76,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .indicator-humidity {
+    width: 85%;
+  }
 }
 .percentage-text {
   width: 100%;
