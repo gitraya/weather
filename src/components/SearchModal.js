@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import 'styles/SearchModal.css';
 
-const SearchModal = ({ modal, cors }) => {
+const SearchModal = ({ modal, cors, searchHandle }) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
 
@@ -12,13 +12,13 @@ const SearchModal = ({ modal, cors }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setSearchResult(data);
+        if (data.length < 1) {
+          return setSearchResult([{ message: 'Location cannot be found.' }]);
+        } else {
+          return setSearchResult(data);
+        }
       })
       .catch((err) => console.log(err));
-
-    if (searchResult.length === 0)
-      return setSearchResult([{ message: 'Location cannot be found.' }]);
   };
 
   const handleInputChange = (e) => {
@@ -35,8 +35,9 @@ const SearchModal = ({ modal, cors }) => {
     return;
   };
 
-  const handleSearchedLocation = (e) => {
-    console.log(e.target.querySelector('span').innerText);
+  const handleSearchedLocation = (result) => {
+    handleCloseModal();
+    searchHandle(result.woeid);
   };
 
   const renderResultButton = searchResult.map((result, i) => {
@@ -44,7 +45,9 @@ const SearchModal = ({ modal, cors }) => {
       <button
         key={result.woeid}
         type="submit"
-        onClick={handleSearchedLocation}
+        onClick={() => {
+          handleSearchedLocation(result);
+        }}
         className="result-button"
       >
         <span>{result.title}</span>

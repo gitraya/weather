@@ -1,6 +1,6 @@
 import 'styles/CardsHighlights.css';
 
-const CardsHighlights = () => {
+const CardsHighlights = ({ data }) => {
   return (
     <div className="cards-highlights">
       <h2>Today’s Hightlights</h2>
@@ -8,19 +8,28 @@ const CardsHighlights = () => {
         <div className="card-highlight">
           <h3 className="highlight-title">Wind status</h3>
           <span className="highlight-text more">
-            7<span>mph</span>
+            {parseInt(data.wind_speed)}
+            <span>mph</span>
           </span>
           <div className="indicator-navigation">
             <div className="wind-icon">
-              <i class="material-icons-round">navigation</i>
+              <i
+                class="material-icons-round"
+                style={{
+                  transform: `rotate(${parseInt(data.wind_direction)}deg)`,
+                }}
+              >
+                navigation
+              </i>
             </div>
-            <span>WSW</span>
+            <span>{data.wind_direction_compass}</span>
           </div>
         </div>
         <div className="card-highlight">
           <h3 className="highlight-title">Humidity</h3>
           <span className="highlight-text more">
-            84<span>%</span>
+            {data.humidity}
+            <span>%</span>
           </span>
           <div className="indicator-humidity">
             <div className="percentage-text">
@@ -29,7 +38,10 @@ const CardsHighlights = () => {
               <span>100</span>
             </div>
             <div className="humidity-percentage">
-              <div className="percent-range"></div>
+              <div
+                className="percent-range"
+                style={{ width: `${data.humidity}%` }}
+              ></div>
             </div>
             <span className="percent-text">%</span>
           </div>
@@ -37,13 +49,13 @@ const CardsHighlights = () => {
         <div className="card-highlight">
           <h3 className="highlight-title">Visibility</h3>
           <span className="highlight-text">
-            6,4 <span>miles</span>
+            {data.visibility.toFixed(1).split('.').join(',')} <span>miles</span>
           </span>
         </div>
         <div className="card-highlight">
           <h3 className="highlight-title">Air Pressure</h3>
           <span className="highlight-text">
-            998 <span>mb</span>
+            {parseInt(data.air_pressure)} <span>mb</span>
           </span>
         </div>
       </div>

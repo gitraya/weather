@@ -4,15 +4,18 @@ import cloudBackground from 'images/Cloud-background.png';
 import { getWeatherImage } from 'helpers/images';
 import SearchModal from 'components/SearchModal';
 
-const Aside = ({ data, location, cors }) => {
+const Aside = ({ data, location, cors, searchHandle, temp }) => {
+  // react state for weather data and search modal
   const [modalOpen, setModalOpen] = useState(false);
   const [weatherImage, setWeatherImage] = useState(null);
   const [dates, setDates] = useState('');
 
+  // handle modal button
   const handleModal = () => {
     setModalOpen(!modalOpen);
   };
 
+  // react side effect to change dates and image value
   useEffect(() => {
     if (data) {
       setWeatherImage(getWeatherImage(data.weather_state_abbr));
@@ -50,8 +53,10 @@ const Aside = ({ data, location, cors }) => {
             </div>
             <div className="text-weather">
               <h1>
-                {parseInt(data.the_temp)}
-                <span>℃</span>
+                {temp.isFahrenheit
+                  ? parseInt(temp.convertTemp(data.the_temp))
+                  : parseInt(data.the_temp)}
+                <span>{temp.isFahrenheit ? '℉' : '℃'}</span>
               </h1>
               <h2>{data.weather_state_name}</h2>
             </div>
@@ -72,7 +77,11 @@ const Aside = ({ data, location, cors }) => {
         </main>
       </div>
       <img className="img-bg" src={cloudBackground} alt="cloud background" />
-      <SearchModal modal={{ handleModal, modalOpen }} cors={cors} />
+      <SearchModal
+        modal={{ handleModal, modalOpen }}
+        cors={cors}
+        searchHandle={searchHandle}
+      />
     </aside>
   );
 };
