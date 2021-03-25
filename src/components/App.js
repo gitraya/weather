@@ -93,6 +93,9 @@ const App = () => {
   // react use effect get data from metaweather api
   useEffect(() => {
     const getAllData = async () => {
+      if (navigator.geolocation && !allData) {
+        await getUserLocation;
+      }
       if (!allData) {
         let data = await fetchingData(1047378);
         return getWeatherData(data);
