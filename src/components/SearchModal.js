@@ -5,7 +5,7 @@ import 'styles/SearchModal.css';
 const SearchModal = ({ modal, cors, searchHandle }) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
-  const [isLoading, setIsLoading] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
     indicator: <ThreeDots width="50" />,
@@ -55,7 +55,7 @@ const SearchModal = ({ modal, cors, searchHandle }) => {
   // render button element
   const renderResultButton = () => {
     // if still loading, show animation
-    if (!isLoading && searchValue) {
+    if (!isLoading) {
       return (
         <div className="loading" {...containerProps}>
           {indicatorEl}

@@ -67,7 +67,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem 1.5rem;
+  gap: 1.5rem 1.5rem !important;
 }
 
 /* mobile device */
