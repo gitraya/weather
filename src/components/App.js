@@ -94,7 +94,7 @@ const App = () => {
   useEffect(() => {
     const getAllData = async () => {
       if (navigator.geolocation && !allData) {
-        await getUserLocation;
+        await getUserLocation();
       }
       if (!allData) {
         let data = await fetchingData(1047378);
@@ -107,7 +107,7 @@ const App = () => {
   return (
     <div className="App">
       {!isLoading ? (
-        <div className="loading" {...containerProps}>
+        <div className="loadAll" {...containerProps}>
           {indicatorEl}
         </div>
       ) : (

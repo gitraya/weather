@@ -22,6 +22,12 @@ i {
   position: relative;
 }
 
+.loadAll {
+  align-self: center;
+  justify-self: center;
+  margin: auto;
+}
+
 /* mobile device */
 @media screen and (max-width: 540px) {
   .App {
