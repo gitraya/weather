@@ -6,7 +6,8 @@ import Main from 'components/Main.js';
 const App = () => {
   const cors_api_url = 'https://cors-anywhere-venky.herokuapp.com/';
 
-  const [isLoading, setIsLoading] = useState(null);
+  // react state for loading indicator
+  const [isLoading, setIsLoading] = useState(false);
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
     indicator: <ThreeDots width="50" />,
@@ -22,7 +23,6 @@ const App = () => {
 
   // fetching weather data based on woeid
   const fetchingData = async (woeid) => {
-    setIsLoading(false);
     let fetchData;
     await fetch(
       `${cors_api_url}https://www.metaweather.com/api/location/${woeid}`
