@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
+import { useLoading, ThreeDots } from '@agney/react-loading';
 import Aside from 'components/Aside';
 import Main from 'components/Main.js';
 
 const App = () => {
   const cors_api_url = 'https://cors-anywhere-venky.herokuapp.com/';
+
+  const [isLoading, setIsLoading] = useState(null);
+  const { containerProps, indicatorEl } = useLoading({
+    loading: true,
+    indicator: <ThreeDots width="50" />,
+  });
 
   // react state for all weather data
   const [allData, setAllData] = useState(null);
@@ -15,6 +22,7 @@ const App = () => {
 
   // fetching weather data based on woeid
   const fetchingData = async (woeid) => {
+    setIsLoading(false);
     let fetchData;
     await fetch(
       `${cors_api_url}https://www.metaweather.com/api/location/${woeid}`
@@ -24,6 +32,7 @@ const App = () => {
         return (fetchData = data);
       })
       .catch((err) => console.log(err));
+    setIsLoading(true);
     return fetchData;
   };
 
@@ -94,6 +103,13 @@ const App = () => {
 
   return (
     <div className="App">
+      {!isLoading ? (
+        <div className="loading" {...containerProps}>
+          {indicatorEl}
+        </div>
+      ) : (
+        ''
+      )}
       {todayWeather && locationName ? (
         <Aside
           data={todayWeather}
