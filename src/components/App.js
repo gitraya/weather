@@ -85,8 +85,6 @@ const App = () => {
   useEffect(() => {
     const getAllData = async () => {
       if (!allData) {
-        await getUserLocation();
-      } else if (!allData) {
         let data = await fetchingData(1047378);
         return getWeatherData(data);
       }
