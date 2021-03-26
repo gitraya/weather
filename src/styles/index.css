@@ -23,8 +23,14 @@ i {
 }
 
 .loadAll {
-  align-self: center;
-  justify-self: center;
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background: #100e1d6c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: auto;
 }
 

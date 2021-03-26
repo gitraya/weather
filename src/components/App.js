@@ -24,6 +24,7 @@ const App = () => {
   // fetching weather data based on woeid
   const fetchingData = async (woeid) => {
     let fetchData;
+    setIsLoading(true);
     await fetch(
       `${cors_api_url}https://www.metaweather.com/api/location/${woeid}`
     )
@@ -32,7 +33,7 @@ const App = () => {
         return (fetchData = data);
       })
       .catch((err) => console.log(err));
-    setIsLoading(true);
+    setIsLoading(false);
     return fetchData;
   };
 
@@ -102,11 +103,14 @@ const App = () => {
       }
     };
     getAllData();
+    isLoading
+      ? (document.body.style.overflowY = 'hidden')
+      : (document.body.style.overflowY = 'unset');
   });
 
   return (
     <div className="App">
-      {!isLoading ? (
+      {isLoading ? (
         <div className="loadAll" {...containerProps}>
           {indicatorEl}
         </div>

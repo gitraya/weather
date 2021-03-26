@@ -5,7 +5,7 @@ import 'styles/SearchModal.css';
 const SearchModal = ({ modal, cors, searchHandle }) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
     indicator: <ThreeDots width="50" />,
@@ -14,7 +14,7 @@ const SearchModal = ({ modal, cors, searchHandle }) => {
   // handle the location search of the user
   const handleSearchLocation = async (e) => {
     e.preventDefault();
-    setIsLoading(false);
+    setIsLoading(true);
     await fetch(
       `${cors}https://www.metaweather.com/api/location/search/?query=${searchValue.toLowerCase()}`
     )
@@ -27,7 +27,7 @@ const SearchModal = ({ modal, cors, searchHandle }) => {
         }
       })
       .catch((err) => console.log(err));
-    setIsLoading(true);
+    setIsLoading(false);
   };
 
   // handle input value changes
@@ -55,7 +55,7 @@ const SearchModal = ({ modal, cors, searchHandle }) => {
   // render button element
   const renderResultButton = () => {
     // if still loading, show animation
-    if (!isLoading) {
+    if (isLoading) {
       return (
         <div className="loading" {...containerProps}>
           {indicatorEl}
