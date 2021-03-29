@@ -47,7 +47,7 @@
 ## Features
 
 - Users can search by location.
-- User can access weather based on his current location.
+- Users can access weather based on his current location.
 - Users can change the temperature from Celsius to Fahrenheit and vice versa.
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv) was to build an application to complete the given user stories.
