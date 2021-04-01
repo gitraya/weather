@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import 'styles/Main.css';
-import Footer from 'components/Footer';
-import CardWeather from 'components/CardWeather';
-import CardsHighlights from 'components/CardsHighlights';
+import 'components/Main/Main.css';
+import Footer from 'components/Footer/Footer';
+import CardWeather from 'components/Main/CardWeather/CardWeather';
+import CardsHighlight from 'components/Main/CardsHighlight/CardsHighlight';
 
 const Main = ({ data, todaysData, temp }) => {
   // react state for the next 5 days of weather
@@ -68,7 +68,7 @@ const Main = ({ data, todaysData, temp }) => {
       </header>
       <main className="main">
         <div className="cards-weekly">{cardsWeather}</div>
-        <CardsHighlights data={todaysData} />
+        <CardsHighlight data={todaysData} />
       </main>
       <Footer />
     </div>

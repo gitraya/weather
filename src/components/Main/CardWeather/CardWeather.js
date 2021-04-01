@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import 'styles/CardWeather.css';
+import 'components/Main/CardWeather/CardWeather.css';
 import { getWeatherImage } from 'helpers/images';
 
 const CardWeather = ({ data, index, temp }) => {

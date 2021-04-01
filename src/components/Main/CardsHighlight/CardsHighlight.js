@@ -1,6 +1,6 @@
-import 'styles/CardsHighlights.css';
+import 'components/Main/CardsHighlight/CardsHighlight.css';
 
-const CardsHighlights = ({ data }) => {
+const CardsHighlight = ({ data }) => {
   return (
     <div className="cards-highlights">
       <h2>Today’s Hightlights</h2>
@@ -63,4 +63,4 @@ const CardsHighlights = ({ data }) => {
   );
 };
 
-export default CardsHighlights;
+export default CardsHighlight;

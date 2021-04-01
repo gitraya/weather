@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLoading, ThreeDots } from '@agney/react-loading';
-import 'styles/SearchModal.css';
+import 'components/Aside/SearchModal/SearchModal.css';
 
 const SearchModal = ({ modal, cors, searchHandle }) => {
   const [searchValue, setSearchValue] = useState('');

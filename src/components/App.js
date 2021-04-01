@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLoading, ThreeDots } from '@agney/react-loading';
-import Aside from 'components/Aside';
-import Main from 'components/Main.js';
+import Aside from 'components/Aside/Aside';
+import Main from 'components/Main/Main.js';
 
 const App = () => {
   const cors_api_url = 'https://cors-anywhere-venky.herokuapp.com/';
