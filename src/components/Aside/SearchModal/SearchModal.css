@@ -136,6 +136,11 @@ form {
 }
 
 /* mobile device */
+@media screen and (max-width: 540px) {
+  .modal-search {
+    height: 100vh;
+  }
+}
 @media screen and (max-width: 425px) {
   .modal-search {
     padding: 0px 1rem;

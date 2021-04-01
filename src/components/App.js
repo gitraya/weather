@@ -25,22 +25,22 @@ const App = () => {
   const fetchingData = async (woeid) => {
     let fetchData;
     setIsLoading(true);
-    await fetch(
-      `${cors_api_url}https://www.metaweather.com/api/location/${woeid}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        return (fetchData = data);
-      })
-      .catch((err) => console.log(err));
+    try {
+      const res = await fetch(
+        `${cors_api_url}https://www.metaweather.com/api/location/${woeid}`
+      );
+      fetchData = await res.json();
+    } catch (error) {
+      console.log(error);
+    }
     setIsLoading(false);
     return fetchData;
   };
 
   // ask and get user location
-  const getUserLocation = () => {
+  const getUserLocation = async () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(getPosition);
+      await navigator.geolocation.getCurrentPosition(getPosition);
     } else {
       alert('Cannot find your location!');
     }
@@ -48,19 +48,16 @@ const App = () => {
 
   // get user position and update weather data by user position
   const getPosition = async ({ coords }) => {
-    await fetch(
-      `${cors_api_url}https://www.metaweather.com/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          return updateWeatherData(data[0].woeid);
-        } else {
-          alert('Cannot find your location!');
-          return false;
-        }
-      })
-      .catch((err) => console.log(err));
+    let data;
+    try {
+      const res = await fetch(
+        `${cors_api_url}https://www.metaweather.com/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
+      );
+      data = await res.json();
+    } catch (error) {
+      console.log(error);
+    }
+    return updateWeatherData(data[0].woeid);
   };
 
   // get and set weather data
@@ -76,13 +73,13 @@ const App = () => {
   // update weather data while user search by location
   const updateWeatherData = async (woeid) => {
     setWoeid(woeid);
-    let data = await fetchingData(woeid);
+    const data = await fetchingData(woeid);
     return getWeatherData(data);
   };
 
   // convert temperature from celcius to fahrenheit
   const convertTemp = (celcius) => {
-    let fahren = parseInt(celcius) * 1.8 + 32;
+    const fahren = parseInt(celcius) * 1.8 + 32;
     return fahren;
   };
 
@@ -94,12 +91,12 @@ const App = () => {
   // react use effect get data from metaweather api
   useEffect(() => {
     const getAllData = async () => {
-      if (navigator.geolocation && !allData) {
-        await getUserLocation();
-      }
       if (!allData) {
-        let data = await fetchingData(1047378);
-        return getWeatherData(data);
+        await navigator.geolocation.getCurrentPosition(getPosition);
+        if (!allData) {
+          const data = await fetchingData(1047378);
+          return getWeatherData(data);
+        }
       }
     };
     getAllData();
