@@ -29,17 +29,10 @@ const Aside = ({ data, location, cors, searchHandle, temp, position }) => {
           .slice(0, 3),
       });
     }
-
-    modalOpen
-      ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = 'unset');
-  }, [data, modalOpen]);
+  }, [data]);
 
   return (
-    <aside
-      className="container default"
-      style={modalOpen ? { height: '100vh' } : { height: 'unset' }}
-    >
+    <aside className="container default">
       <div className="app-default">
         <header className="header">
           <nav className="nav">
