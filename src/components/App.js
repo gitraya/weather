@@ -92,7 +92,7 @@ const App = () => {
   useEffect(() => {
     const getAllData = async () => {
       if (!allData) {
-        navigator.geolocation.getCurrentPosition(getPosition);
+        await navigator.geolocation.getCurrentPosition(getPosition);
         if (!allData) {
           const data = await fetchingData(woeid);
           return getWeatherData(data);
