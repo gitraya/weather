@@ -12,22 +12,22 @@ const SearchModal = ({ modal, cors, searchHandle }) => {
   });
 
   // handle the location search of the user
-  const handleSearchLocation = async (e) => {
+  const handleSearchLocation = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    await fetch(
+    fetch(
       `${cors}https://www.metaweather.com/api/location/search/?query=${searchValue.toLowerCase()}`
     )
       .then((res) => res.json())
       .then((data) => {
         if (data.length < 1) {
-          return setSearchResult([{ message: 'Location cannot be found.' }]);
+          setSearchResult([{ message: 'Location cannot be found.' }]);
         } else {
-          return setSearchResult(data);
+          setSearchResult(data);
         }
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
-    setIsLoading(false);
   };
 
   // handle input value changes

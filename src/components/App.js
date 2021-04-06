@@ -18,7 +18,7 @@ const App = () => {
   const [todayWeather, setTodayWeather] = useState(null);
   const [weeklyWeather, setWeeklyWeather] = useState(null);
   const [locationName, setLocationName] = useState(null);
-  const [woeid, setWoeid] = useState(null);
+  const [woeid, setWoeid] = useState(1047378);
   const [isFahrenheit, setIsFahrenheit] = useState(false);
 
   // fetching weather data based on woeid
@@ -38,9 +38,9 @@ const App = () => {
   };
 
   // ask and get user location
-  const getUserLocation = async () => {
+  const getUserLocation = () => {
     if (navigator.geolocation) {
-      await navigator.geolocation.getCurrentPosition(getPosition);
+      navigator.geolocation.getCurrentPosition(getPosition);
     } else {
       alert('Cannot find your location!');
     }
@@ -92,9 +92,9 @@ const App = () => {
   useEffect(() => {
     const getAllData = async () => {
       if (!allData) {
-        await navigator.geolocation.getCurrentPosition(getPosition);
+        navigator.geolocation.getCurrentPosition(getPosition);
         if (!allData) {
-          const data = await fetchingData(1047378);
+          const data = await fetchingData(woeid);
           return getWeatherData(data);
         }
       }
